@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>success</title>
+  <link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Результаты анализа</h1>
+        <p style="text-align:justify;">Ниже представлена таблица с ТОП-50 словами, содержащая количество
+            вхождений (Count), частоту встречаемости (TF) и значимость слов (IDF).
+            Данные отсортированы по убыванию IDF.</p>
+
+        <div class="formulas-wrapper">
+            <input type="checkbox" id="toggle-formulas" class="toggle-checkbox">
+            <label for="toggle-formulas" class="toggle-label">Формулы расчёта ⮟</label>
+
+            <div class="formulas-content">
+                <p><strong>TF (Term Frequency)</strong> = n / ∑n</p>
+                 <ul>
+                    <li><strong> n</strong> — Количество вхождений слова</li>
+                    <li><strong> ∑n</strong> — Общее количество слов в документе</li>
+                </ul>
+                <p><strong>IDF (Inverse Document Frequency)</strong> = log(N / df(w) )</p>
+                <ul>
+                    <li><strong> N</strong> — Общее количество предложений</li>
+                    <li><strong> df(w)</strong> — Количество предложений, где встречается слово (w)</li>
+                </ul>
+            </div>
+        </div>
+
+        <table class="customTable">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Count</th>
+                    <th>TF</th>
+                    <th>IDF</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for word, val in words.items() %}
+                <tr>
+                    <td>
+                        {{ word }}
+                    </td>
+                    <td>
+                        {{ val[0] }}
+                    </td>
+                    <td>
+                        {{ "{:.6f}".format(val[1]) }}
+                    </td>
+                    <td>
+                        {{ "{:.4f}".format(val[2]) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>

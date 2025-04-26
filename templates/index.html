@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Анализ текста: TF и IDF</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Анализ текста: TF и IDF</h1>
+        <p>Загрузите текстовый файл (.txt), чтобы увидеть, какие слова в нём самые значимые.</p>
+
+        <form action="/text_analysis" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Загрузка файла</legend>
+
+                <input type="file" name="file"/>
+                <input type="submit" value="Загрузить"/>
+
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>
